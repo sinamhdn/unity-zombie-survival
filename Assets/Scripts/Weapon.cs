@@ -26,14 +26,14 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        fpCamera = transform.parent.parent.GetComponent<Camera>();
+        muzzleFlash = transform.GetChild(0).GetComponent<ParticleSystem>();
+        ammoSlot = GameObject.FindGameObjectWithTag("Player").GetComponent<Ammo>();
         ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
     }
 
     private void Update()
     {
-        fpCamera = transform.parent.parent.GetComponent<Camera>();
-        muzzleFlash = transform.GetChild(0).GetComponent<ParticleSystem>();
-        ammoSlot = FindObjectOfType<Player>().GetComponent<Ammo>();
         DisplayAmmo();
         // if (Input.GetButtonDown("Fire1") && canShoot)
         if (Input.GetMouseButtonDown(0) && canShoot)
