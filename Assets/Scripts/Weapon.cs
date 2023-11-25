@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -12,6 +13,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] float range = 100f;
     [SerializeField] float damage = 30f;
     [SerializeField] float shotInterval = 0.5f;
+    TextMeshProUGUI ammoText;
     Camera fpCamera;
     ParticleSystem muzzleFlash;
     Ammo ammoSlot;
@@ -22,11 +24,17 @@ public class Weapon : MonoBehaviour
         StartCoroutine(EnableShoot());
     }
 
+    private void Start()
+    {
+        ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<TextMeshProUGUI>();
+    }
+
     private void Update()
     {
         fpCamera = transform.parent.parent.GetComponent<Camera>();
         muzzleFlash = transform.GetChild(0).GetComponent<ParticleSystem>();
         ammoSlot = FindObjectOfType<Player>().GetComponent<Ammo>();
+        DisplayAmmo();
         // if (Input.GetButtonDown("Fire1") && canShoot)
         if (Input.GetMouseButtonDown(0) && canShoot)
         {
@@ -66,7 +74,7 @@ public class Weapon : MonoBehaviour
         {
             SpawnHitEffect(hit);
             // Debug.Log("Target attacked " + hit.transform.name);
-            EnemyHealth target = hit.transform.parent.GetComponent<EnemyHealth>();
+            EnemyHealth target = hit.transform.GetComponentInParent<EnemyHealth>();
             if (!target) return;
             target.TakeDamage(damage);
         }
@@ -79,5 +87,10 @@ public class Weapon : MonoBehaviour
         // turn on play on awake because we dont use Play() fonctionfor this
         ParticleSystem spawnedHitEffect = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
         // Destroy(spawnedHitEffect, 1f);
+    }
+    private void DisplayAmmo()
+    {
+        int currentAmmo = ammoSlot.GetCurrentAmmo(ammoType);
+        ammoText.text = currentAmmo.ToString();
     }
 }

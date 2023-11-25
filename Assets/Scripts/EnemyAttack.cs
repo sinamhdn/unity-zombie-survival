@@ -20,5 +20,6 @@ public class EnemyAttack : MonoBehaviour
         // both are correct
         // playerHealth.TakeDamage(damage);
         target.GetComponent<PlayerHealth>().TakeDamage(damage);
+        target.GetComponent<UISplatter>().showSlashCanvas();
     }
 }

@@ -4,23 +4,35 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     // [SerializeField] Transform target;
-    [SerializeField] GameObject target;
+    //[SerializeField] GameObject target;
     [SerializeField] float followRange = 5f;
     [SerializeField] float turnSpeed = 5f;
+    Player target;
     NavMeshAgent agent;
+    EnemyHealth health;
     float distanceToTarget = Mathf.Infinity; // assign to a really big number
     bool hasAggro = false;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        target = FindObjectOfType<Player>();
         agent = GetComponent<NavMeshAgent>();
+        health = GetComponent<EnemyHealth>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        InteractWithTarget();
+        if (health.GetIsDead())
+        {
+            enabled = false;
+            agent.enabled = false;
+        }
+        else
+        {
+            InteractWithTarget();
+        }
     }
 
     void OnDrawGizmosSelected()
