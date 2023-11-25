@@ -19,6 +19,7 @@ A simple survival horror demo project in unity
 - Realistic Tree 9 by Pixel Games
 - Cartoon FX Remaster Free by Jean Moreno
 - Zombie by Pxltiger
+- Font are from https://www.dafont.com/
 
 ## Concepts Used
 - Game Design architecture
