@@ -7,7 +7,7 @@ A simple survival horror demo project in unity
 ## Unreal Engine Version
 2022.3.2f1 LTS
 
-# Packages Used
+# Packages
 - Navigation AI
 - Cinemachine
 - Probuilder
