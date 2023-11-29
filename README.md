@@ -13,7 +13,7 @@ A simple survival horror demo project in unity
 - Probuilder
 - Progrids
 
-## Assets Used
+## Assets
 - StarterAssets - FirstPerson by Unity Technologies
 - Standard Assets by Unity Technologies
 - Realistic Tree 9 by Pixel Games
@@ -21,7 +21,7 @@ A simple survival horror demo project in unity
 - Zombie by Pxltiger
 - Font are from https://www.dafont.com/
 
-## Concepts Used
+## Concepts
 - Game Design architecture
 - Mesh Collider
 - Character Controller
